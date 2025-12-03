@@ -3,6 +3,13 @@ El script utiliza unicamente la libreria hashlib y la libreria time (aunque esta
 
 Fin
 
+V1.3
+    
+    [-] Output la misma mrd
+    [+] Optimizacion
+    [+] Mas facilidad para agregar algoritmos
+    [+] Unificación de funciones y eliminación de clases
+
 V1.2
 
     [+] Limite de intentos en el input de hash y de la ruta de wordlists
