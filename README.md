@@ -12,6 +12,8 @@ Fin
 
 Para usar el script simplemente ejecute 
 
+    pip3 install hashlib time --break-system-packages #instalación de dependencias
+    
     python3 simple_hash_cracker.py
 
 V1.3
