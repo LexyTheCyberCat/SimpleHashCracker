@@ -1,5 +1,12 @@
 # SimpleHashCracker
-El script utiliza unicamente la libreria hashlib y la libreria time (aunque esta se puede quitar) contiene 3 algoritmos ya predefinidos MD5, SHA256 y SHA512 pero pueden cambiarse segun sus necesidades. La funcion otro() esta hecha especificamente para usar un algoritmo distinto sin tener que reescribir todo el codigo, simplemente cambie la palabra "hash" en la linea 33 'hash_supersexy = hashlib.hash(i.encode()).hexdigest()' por el algoritmo que desee usar.
+El script utiliza unicamente las librerias hashlib y time (aunque esta se puede quitar) contiene 4 algoritmos ya predefinidos MD5, SHA1, SHA256 y SHA512 pero pueden cambiarse segun sus necesidades en el apartado:
+    
+    hash_info = {
+        32: {"func": hashlib.md5, "name": "MD5"},
+        40: {"func": hashlib.sha1, "name": "SHA-1"},
+        64: {"func": hashlib.sha256, "name": "SHA-256"},
+        128: {"func": hashlib.sha512, "name": "SHA-512"}
+    }
 
 Fin
 
