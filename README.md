@@ -10,6 +10,10 @@ El script utiliza unicamente las librerias hashlib y time (aunque esta se puede 
 
 Fin
 
+Para usar el script simplemente ejecute 
+
+    python3 simple_hash_cracker.py
+
 V1.3
     
     [-] Output la misma mrd
