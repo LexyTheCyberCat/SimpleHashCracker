@@ -49,9 +49,23 @@ def __main__():
 
     print(f"\n{colors.green}Hash: {colors.reset}{password}\n{colors.blue}[*]{colors.reset} Crackeando, porfavor espere...\n"), time.sleep(1)
 
-    def MD5_hash():
+    hash_info = {
+        32: {"func": hashlib.md5, "name": "MD5"},
+        40: {"func": hashlib.sha1, "name": "SHA-1"},
+        64: {"func": hashlib.sha256, "name": "SHA-256"},
+        128: {"func": hashlib.sha512, "name": "SHA-512"}
+    }
+
+    def crackear_hash():      
+        if caracteres not in hash_info:
+            print(f"{colors.red}[-] {colors.reset}Hash no soportado ({caracteres} chars)")
+            return
+        
+        info = hash_info[caracteres]
+        funcion_hash = info["func"]
+
         for i in wordlist:
-            hash_supersexy = hashlib.md5(i.encode()).hexdigest()
+            hash_supersexy = funcion_hash(i.encode()).hexdigest()
             # print(f"probando: {i} \nhash: {hash_supersexy} \n") # opcional: para ver el proceso
             
             if password == hash_supersexy:
@@ -61,58 +75,11 @@ def __main__():
         if password != hash_supersexy:
             print(f"{colors.red}[-] {colors.reset}Contraseña no encontrada :(")
 
-    def SHA256_hash():
-        for i in wordlist:
-            hash_supersexy = hashlib.sha256(i.encode()).hexdigest()
-            # print(f"probando: {i} \nhash: {hash_supersexy} \n") # opcional: para ver el proceso
-            
-            if password == hash_supersexy:
-                print(f"{colors.green}[+] {colors.reset}Contraseña crackeada: {colors.yellow}{i}")
-                break
-        
-        if password != hash_supersexy:
-            print(f"{colors.red}[-] {colors.reset}Contraseña no encontrada :(")
-
-    def SHA512_hash():
-        for i in wordlist:
-            hash_supersexy = hashlib.sha512(i.encode()).hexdigest()
-            # print(f"probando: {i} \nhash: {hash_supersexy} \n") # opcional: para ver el proceso
-            
-            if password == hash_supersexy:
-                print(f"{colors.green}[+] {colors.reset}Contraseña crackeada: {colors.yellow}{i}")
-                break
-        
-        if password != hash_supersexy:
-            print(f"{colors.red}[-] {colors.reset}Contraseña no encontrada :(")
-
-    # def otro():
-    #     for i in wordlist:
-    #         hash_supersexy = hashlib.hash(i.encode()).hexdigest() # cambiar "hash" por el algoritmo que uses
-    #         # print(f"probando: {i} \nhash: {hash_supersexy} \n") # opcional: para ver el proceso
-    #         
-    #         if password == hash_supersexy:
-    #             print(f"{colors.green}[+] {colors.reset}Contraseña crackeada: {colors.yellow}{i}")
-    #             break
-    #     
-    #     if password != hash_supersexy:
-    #         print(f"{colors.red}[-] {colors.reset}Contraseña no encontrada :(")
-
-    # Elije la funcion segun cantidad de caracteres
-    match caracteres:
-            case 32:
-                print(f"{colors.green}[+] {colors.reset}Hash MD5 detectado\n")
-                MD5_hash()
-
-            case 64:
-                print(f"{colors.green}[+] {colors.reset}Hash SHA256 detectado\n")
-                SHA256_hash()
-
-            case 128:
-                print(f"{colors.green}[+] {colors.reset}Hash SHA512 detectado\n")
-                SHA512_hash()
-
-            #case otro:
-            #    otro()
+    if caracteres in hash_info:
+        info = hash_info[caracteres]
+        nombre = info["name"] 
+        print(f"{colors.green}[+] {colors.reset}Hash {nombre} detectado\n")
+        crackear_hash()
 
 if __name__ == "__main__":
     __main__()
