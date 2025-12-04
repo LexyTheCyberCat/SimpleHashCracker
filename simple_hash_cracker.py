@@ -1,5 +1,6 @@
 import hashlib
 import time
+
 def __main__():
     class colors:
         red = '\033[91m'
@@ -63,16 +64,17 @@ def __main__():
         
         info = hash_info[caracteres]
         funcion_hash = info["func"]
-        
-        for index, i in enumerate(index, start=1):
-            porcentaje = (index / len(wordlist)) * 100
-            print(f"{colors.blue}[*] {colors.reset} Probando {index}/{len(wordlist)} ({porcentaje:.2f})%", end="\r")
+
+        for index, i in enumerate(wordlist, start=1):
             hash_supersexy = funcion_hash(i.encode()).hexdigest()
             # print(f"probando: {i} \nhash: {hash_supersexy} \n") # opcional: para ver el proceso
             
+            porcentaje = (index / len(wordlist)) * 100
+            print(f"{colors.blue}[*] {colors.reset} Probando {index}/{len(wordlist)} ({porcentaje:.2f})%", end="\r")
             if password == hash_supersexy:
+                print()
                 print(f"{colors.green}[+] {colors.reset}Contraseña crackeada: {colors.yellow}{i}")
-                break
+                return
         
         if password != hash_supersexy:
             print(f"{colors.red}[-] {colors.reset}Contraseña no encontrada :(")
