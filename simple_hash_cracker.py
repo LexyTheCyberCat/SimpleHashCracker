@@ -63,8 +63,10 @@ def __main__():
         
         info = hash_info[caracteres]
         funcion_hash = info["func"]
-
-        for i in wordlist:
+        
+        for index, i in enumerate(wordlist, start=1):
+            porcentaje = (index / len(wordlist)) * 100
+            print(f"{colors.blue}[*] {colors.reset} Probando {index}/{len(wordlist)} ({porcentaje:.2f})%", end="\r")
             hash_supersexy = funcion_hash(i.encode()).hexdigest()
             # print(f"probando: {i} \nhash: {hash_supersexy} \n") # opcional: para ver el proceso
             
