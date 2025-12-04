@@ -21,7 +21,9 @@ V1.3
     [-] Output la misma mrd
     [+] Optimizacion
     [+] Mas facilidad para agregar algoritmos
-    [+] Unificación de funciones y eliminación de clases
+    [+] Unificación de funciones
+    [-] eliminación de clases
+    [+] Barra de progreso agregada
 
 V1.2
 
